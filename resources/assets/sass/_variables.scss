@@ -36,3 +36,9 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
+
+// Sidebar
+$sidebar-width: 225px;
+
+// Main body
+$main-body-width: calc(100% - #{$sidebar-width});
