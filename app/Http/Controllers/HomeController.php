@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,21 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index']);
+    }
+
+    /**
+     * Show the application landing.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (Auth::check()) {
+            return redirect('dashboard');
+        }
+
+        return redirect('login');
     }
 
     /**
@@ -21,8 +36,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dashboard()
     {
-        return view('home');
+        return view('dashboard');
     }
 }

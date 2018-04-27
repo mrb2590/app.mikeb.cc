@@ -11,14 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Home
+Route::get('/', 'HomeController@index')->name('index');
 
+// Auth
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Dashboard
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
-Auth::routes();
+// Files
+Route::get('/files', 'FilesController@index')->name('files-index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Games
+Route::get('/games', 'GamesController@index')->name('games-index');
+
+// Chat
+Route::get('/chat', 'ChatController@index')->name('chat-index');

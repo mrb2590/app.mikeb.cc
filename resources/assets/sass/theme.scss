@@ -3,49 +3,91 @@ body, html {
 }
 
 // Navigation
-.sidebar, .main-body {
-	float: left;
-	height: calc(100vh - 50px);
-	margin-top: 50px;
-	padding-top: 20px;
+
+// Navbar
+.navbar.main-navbar {
+	margin-bottom: 0;
 }
 
 // Sidebar
+.sidebar, .main-content {
+	float: left;
+	height: calc(100vh - 51px);
+	overflow-y: auto;
+}
+.sidebar, .main-content, .modal, .modal-backdrop, div[class^="col-"] {
+	transition: all 0.5s ease-out 0s;
+}
+
+
+// Sidebar
 .sidebar {
-	width: $sidebar-width;
-	box-shadow: -30px 0 40px -30px rgba(0, 0, 0, 0.2) inset;
+	width: $sidebar-width-lg;
+	background-color: #fff;
+	overflow-x: hidden;
 
-	.section {
-		padding-top: 20px;
+	.list-group-item {
+	    padding: 15px 15px;
+	    border: none;
+		width: $sidebar-width-lg;
 
-		ul {
-			list-style: none;
-			margin: 0;
-			padding: 0;
-
-			> li {
-				padding-left: 15px;
-				padding-right: 15px;
-				padding-top: 8px;
-				padding-bottom: 8px;
-
-				> a {
-					font-size: 26px;
-					font-weight: bold;
-
-					> .fa-fw {
-						margin-right: 15px;
-					}
-				}
-				> a:hover {
-					text-decoration: none;
-				}
-			}
+		> .fa {
+			margin-right: 15px;
 		}
+
+		> span {
+			opacity: 1;
+
+		}
+	}
+
+	.list-group-item:first-child {
+		border-top: none;
+		border-top-left-radius: $sidebar-list-group-border-radius;
+		border-top-right-radius: $sidebar-list-group-border-radius;
+	}
+
+	.list-group-item:last-child {
+		border-bottom-left-radius: $sidebar-list-group-border-radius;
+		border-bottom-right-radius: $sidebar-list-group-border-radius;
 	}
 }
 
-// Main body
-.main-body {
-	width: $main-body-width;
+// Main content
+.main-content {
+	width: $main-content-width-lg;
+	padding-top: 20px;
+	box-shadow: 30px 30px 40px -40px rgba(0, 0, 0, 0.2) inset;
+}
+
+// Modals
+.modal, .modal-backdrop {
+	top: 51px;
+	left: 280px;
+}
+
+// Sidebar and main content medium
+@media (max-width: $screen-md-max) {
+	.sidebar {
+		width: $sidebar-width-md;
+	}
+	.main-content {
+		width: $main-content-width-md;
+	}
+	.modal, .modal-backdrop {
+		left: $sidebar-width-md;
+	}
+}
+
+// Sidebar and main content mobile
+@media (max-width: $screen-xs-max) {
+	.sidebar {
+		width: $sidebar-width-xs;
+	}
+	.main-content {
+		width: $main-content-width-xs;
+	}
+	.modal, .modal-backdrop {
+		left: $sidebar-width-xs;
+	}
 }
