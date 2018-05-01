@@ -25,6 +25,8 @@ Route::get('/files', 'FilesController@index')->name('files-index');
 
 // Games
 Route::get('/games', 'GamesController@index')->name('games-index');
+Route::get('/games/brick-breaker', 'GamesController@brickBreaker')->name('games-brick-breaker');
+Route::get('/games/pong', 'GamesController@pong')->name('games-pong');
 
 // Chat
 Route::get('/chat', 'ChatController@index')->name('chat-index');

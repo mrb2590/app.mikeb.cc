@@ -8,6 +8,7 @@
 require('./bootstrap');
 global.jQuery = $;
 global.toastr = require('toastr');
+global.transformicon = require('./components/transformicons/transformicons');
 
 
 global.maGlobal = require('./global');

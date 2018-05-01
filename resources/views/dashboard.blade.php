@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('title') - Dashboard <@endsection
+
+@section('styles')
+@endsection
+
+@section('scripts')
+@endsection
+
 @section('content')
 <div class="container-fluid">
     <div class="row">

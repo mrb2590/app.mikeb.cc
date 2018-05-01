@@ -11,6 +11,12 @@
 // Font-awesome
 @import "~font-awesome/scss/font-awesome.scss";
 
+// Transformicons
+@import "components/transformicons/transformicon";
+@import "components/transformicons/spinner";
+@import "components/transformicons/xcross-search";
+@import "components/transformicons/xcross-menu";
+
 // Theme
 @import "theme";
 

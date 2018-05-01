@@ -18,18 +18,25 @@ body, html {
 .sidebar, .main-content, .modal, .modal-backdrop, div[class^="col-"] {
 	transition: all 0.5s ease-out 0s;
 }
+.navbar-default .navbar-toggle {
+	float: left;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+	background: none;
+}
 
 
 // Sidebar
 .sidebar {
-	width: $sidebar-width-lg;
+	width: $sidebar-width;
 	background-color: #fff;
 	overflow-x: hidden;
 
 	.list-group-item {
 	    padding: 15px 15px;
 	    border: none;
-		width: $sidebar-width-lg;
+		width: $sidebar-width;
 
 		> .fa {
 			margin-right: 15px;
@@ -53,41 +60,72 @@ body, html {
 	}
 }
 
+body.sidebar-minimized .sidebar {
+	width: $sidebar-width-minimized;
+}
+
+body.sidebar-collapsed .sidebar {
+	width: $sidebar-width-collapsed;
+}
+
 // Main content
 .main-content {
-	width: $main-content-width-lg;
+	width: $main-content-width;
 	padding-top: 20px;
 	box-shadow: 30px 30px 40px -40px rgba(0, 0, 0, 0.2) inset;
+}
+
+body.sidebar-minimized .main-content {
+	width: $main-content-width-sidebar-minimized;
+}
+
+body.sidebar-collapsed .main-content {
+	width: $main-content-width-sidebar-collapsed;
 }
 
 // Modals
 .modal, .modal-backdrop {
 	top: 51px;
-	left: 280px;
+	left: $sidebar-width;
 }
 
-// Sidebar and main content medium
+body.sidebar-minimized .modal,
+body.sidbar-minimized .modal-backdrop {
+	left: $sidebar-width-minimized;
+}
+
+body.sidebar-collapsed .modal,
+body.sidbar-collapsed .modal-backdrop {
+	left: $sidebar-width-collapsed;
+}
+
+// Medium
 @media (max-width: $screen-md-max) {
-	.sidebar {
-		width: $sidebar-width-md;
-	}
+	//
+}
+
+// Mobile
+@media (max-width: $screen-xs-max) {
 	.main-content {
-		width: $main-content-width-md;
+		width: $main-content-width-sidebar-full;
 	}
+	// Modals
 	.modal, .modal-backdrop {
-		left: $sidebar-width-md;
+		top: 51px;
+		left: $main-content-width-sidebar-full;
+	}
+	.sidebar {
+		width: $sidebar-width-full;
+
+		.list-group-item {
+			width: $sidebar-width-full;
+		}
 	}
 }
 
-// Sidebar and main content mobile
-@media (max-width: $screen-xs-max) {
-	.sidebar {
-		width: $sidebar-width-xs;
-	}
-	.main-content {
-		width: $main-content-width-xs;
-	}
-	.modal, .modal-backdrop {
-		left: $sidebar-width-xs;
+// LArger than Mobile
+@media (min-width: $screen-sm) {
+	.navbar-default .navbar-toggle {
+		margin-left: -15px;
 	}
 }

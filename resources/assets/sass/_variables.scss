@@ -42,12 +42,14 @@ $input-color-placeholder: lighten($text-color, 30%);
 $panel-default-heading-bg: #fff;
 
 // Sidebar
-$sidebar-width-lg: 280px;
-$sidebar-width-md: calc(1.28571429em + 30px);;
-$sidebar-width-xs: 0;
+$sidebar-width: 280px;
+$sidebar-width-minimized: calc(1.28571429em + 30px);
+$sidebar-width-collapsed: 0;
+$sidebar-width-full: 100%;
 $sidebar-list-group-border-radius: 0;
 
 // Main content
-$main-content-width-lg: calc(100% - #{$sidebar-width-lg});
-$main-content-width-md: calc(100% - 1.28571429em - 30px);
-$main-content-width-xs: 100%;
+$main-content-width: calc(100% - #{$sidebar-width});
+$main-content-width-sidebar-minimized: calc(100% - 1.28571429em - 30px);
+$main-content-width-sidebar-collapsed: 100%;
+$main-content-width-sidebar-full: 0;

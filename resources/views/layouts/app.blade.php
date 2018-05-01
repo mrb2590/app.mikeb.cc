@@ -8,12 +8,19 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') }} @yield('title')</title>
+
+@section('styles')
+@endsection
+
+@section('scripts')
+@endsection
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
-<body>
+<body class="sidebar-minimized">
     @include('layouts.navbar')
     @include('layouts.sidebar')
 
@@ -32,5 +39,6 @@
     <script>
         maGlobal.bindListeners();
     </script>
+    @yield('scripts')
 </body>
 </html>

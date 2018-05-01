@@ -34,6 +34,83 @@ maGlobal.logout = () => {
 	//sessionStorage.clear();
 };
 
+// Collapse sidebar
+maGlobal.collapseSidebar = function() {
+	var $body = $('body'),
+		width = $(window).width();
+
+	// Small - Collapse
+	if (width < 768) {
+		if (!maGlobal.sidebarIs('collapsed')) {
+			if ($('#sidebar-icon').hasClass('tcon-transform')) {
+				transformicon.revert('#sidebar-icon');
+			}
+			$body.removeClass('sidebar-minimized')
+				 .removeClass('sidebar-collapsed')
+				 .addClass('sidebar-collapsed');
+		}
+	}
+
+	// Everything else - Minimized
+	else {
+		if (!maGlobal.sidebarIs('sidebar-minimized')) {
+			if ($('#sidebar-icon').hasClass('tcon-transform')) {
+				transformicon.revert('#sidebar-icon');
+			}
+			$body.removeClass('sidebar-minimized')
+				 .removeClass('sidebar-collapsed')
+				 .addClass('sidebar-minimized');
+		}
+	}
+};
+
+// Expand sidebar
+maGlobal.expandSidebar = function() {
+	var $body = $('body');
+
+	if (maGlobal.sidebarIs('collapsed') || maGlobal.sidebarIs('minimized')) {
+		if (!$('#sidebar-icon').hasClass('tcon-transform')) {
+			transformicon.toggle('#sidebar-icon');
+		}
+		$body.removeClass('sidebar-minimized')
+			 .removeClass('sidebar-collapsed');
+	}
+};
+
+// Set the width of the sidebar based on window width
+maGlobal.SetSidbarWidth = function() {
+	var width = $(window).width();
+
+	// Small
+	if (width < 768) {
+		maGlobal.collapseSidebar();
+	}
+
+	// Medium
+	else if (width >= 768 && width < 1199) {
+		maGlobal.collapseSidebar();
+	}
+
+	// Large
+	else {
+		maGlobal.expandSidebar();
+	}
+};
+
+// Return true or false based on state passed
+maGlobal.sidebarIs = function(state) {
+	var $body = $('body'),
+		currentState = 'expanded';
+
+	if ($body.hasClass('sidebar-minimized')) {
+		currentState = 'minimized';
+	} else if ($body.hasClass('sidebar-collapsed')) {
+		currentState = 'collapsed';
+	}
+
+	return currentState == state;
+};
+
 
 /**
  * GLOBAL EVENTS
@@ -53,35 +130,27 @@ maGlobal.bindListeners = () => {
 		cache: false
 	});
 
-    // Window resizing
-    $(window).on('resize', function() {
-        // Clear sidebar from hover effects
-		$('#sidebar').css('width', '');
-		$('#main-content').css('width', '');
-    });
-
-	// Open siderbar-md when hovering
-	$('#sidebar').on({
-		mouseenter: () => {
-			var width = $(window).width();
-			if (width >= 768 && width < 1199) {
-				$('#sidebar').css('width', '280px');
-				$('#main-content').css('width', 'calc(100% - 280px)');
-			} else {
-				$('#sidebar').css('width', '');
-				$('#main-content').css('width', '');
-			}
-		},
-		mouseleave: () => {
-			var width = $(window).width();
-			if (width >= 768 && width < 1199) {
-				$('#sidebar').css('width', 'calc(1.28571429em + 30px)');
-				$('#main-content').css('width', 'calc(100% - 1.28571429em - 30px)');
-			} else {
-				$('#sidebar').css('width', '');
-				$('#main-content').css('width', '');
-			}
-		}
+	// Page load
+	$(document).ready(function() {
+		maGlobal.SetSidbarWidth();
 	});
 
+    // Window resizing
+    $(window).on('resize', function() {
+		maGlobal.SetSidbarWidth();
+    });
+
+	// Toggle sidebar with sidebar icon
+	$('#sidebar-icon').on('click', function() {
+
+		// Open
+		if (maGlobal.sidebarIs('collapsed') || maGlobal.sidebarIs('minimized')) {
+			maGlobal.expandSidebar();
+		}
+
+		// Close
+		else {
+			maGlobal.collapseSidebar();
+		}
+	});
 };

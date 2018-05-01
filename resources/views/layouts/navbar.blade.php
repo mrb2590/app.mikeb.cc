@@ -2,12 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            @include('components/transformicons/xcross-menu', ['menuIconId' => 'sidebar-icon'])
 
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name') }}
@@ -19,25 +14,12 @@
             <ul class="nav navbar-nav">
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right hidden-xs">
 
                 @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('login') }}"><i class="fa fa-fw fa-sign-in"></i> Login</a></li>
+                    <li><a href="{{ route('register') }}"><i class="fa fa-fw fa-user-plus"></i> Register</a></li>
                 @endguest
-
-                <li class="visible-xs">
-            		<a href="{{ route('dashboard') }}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-            	</li>
-                <li class="visible-xs">
-            		<a href="{{ route('files-index') }}"><i class="fa fa-fw fa-files-o"></i> Files</a>
-            	</li>
-                <li class="visible-xs">
-            		<a href="{{ route('games-index') }}"><i class="fa fa-fw fa-gamepad"></i> Games</a>
-            	</li>
-                <li class="visible-xs">
-            		<a href="{{ route('chat-index') }}"><i class="fa fa-fw fa-comments"></i> Chat</a>
-                </li>
 
                 @auth
                     <li class="dropdown">
@@ -51,7 +33,7 @@
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    Logout
+                                    <i class="fa fa-fw fa-sign-out"></i> Logout
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -61,6 +43,7 @@
                         </ul>
                     </li>
                 @endauth
+
             </ul>
         </div>
     </div>
