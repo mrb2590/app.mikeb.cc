@@ -10,20 +10,35 @@ body, html {
 }
 
 // Sidebar
-.sidebar, .main-content {
+.sidebar,
+.main-content {
 	float: left;
 	height: calc(100vh - 51px);
 	overflow-y: auto;
 }
-.sidebar, .main-content, .modal, .modal-backdrop, div[class^="col-"] {
-	transition: all 0.5s ease-out 0s;
+.sidebar,
+.main-content,
+.modal,
+.modal-backdrop {
+	transition: width 0.5s ease-out 0s;
 }
-.navbar-default .navbar-toggle {
-	float: left;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-	background: none;
+.navbar-default {
+
+	.navbar-toggle {
+		margin-left: -15px;
+		margin-right: 0;
+		float: left;
+	}
+	.navbar-toggle:hover,
+	.navbar-toggle:focus {
+		background: none;
+	}
+	.container-fluid {
+
+		.navbar-brand {
+			margin-left: 0;
+		}
+	}
 }
 
 
@@ -38,7 +53,8 @@ body, html {
 	    border: none;
 		width: $sidebar-width;
 
-		> .fa {
+		> .fa.fa-fw {
+			width: 23px;
 			margin-right: 15px;
 		}
 
@@ -118,14 +134,18 @@ body.sidbar-collapsed .modal-backdrop {
 		width: $sidebar-width-full;
 
 		.list-group-item {
-			width: $sidebar-width-full;
+			width: 100vw;
 		}
+	}
+	.navbar-default .navbar-toggle {
+		float: right;
+		margin-left: 0;
+		margin-right: 5px;
 	}
 }
 
 // LArger than Mobile
 @media (min-width: $screen-sm) {
 	.navbar-default .navbar-toggle {
-		margin-left: -15px;
 	}
 }

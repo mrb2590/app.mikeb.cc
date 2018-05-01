@@ -20,7 +20,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
-<body class="sidebar-minimized">
+<body class="sidebar-collapsed">
     @include('layouts.navbar')
     @include('layouts.sidebar')
 
