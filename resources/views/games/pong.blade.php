@@ -12,7 +12,6 @@
 
 @section('content')
 <div class="container-fluid">
-		<canvas id="gameCanvas"></canvas>
-	</div>
+	<canvas id="gameCanvas"></canvas>
 </div>
 @endsection

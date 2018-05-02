@@ -79,13 +79,13 @@ window.onload = function() {
 	canvas.addEventListener('mousedown', function(evt) {
 		// restart game
 		if (showingWinScreen) {
-			document.body.className = 'hide-cursor';
+			document.body.classList.add('hide-cursor');
 			showingWinScreen = false;
 			showingStartScreen = true;
 			player1Score = 0;
 			player2Score = 0;
 		} else if (showingStartScreen) {
-			document.body.className = 'hide-cursor';
+			document.body.classList.add('hide-cursor');
 			showingStartScreen = false;
 		}
 	});
@@ -99,7 +99,7 @@ window.onload = function() {
 
 function resizeCanvas() {
 	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+	canvas.height = window.innerHeight - 50;
 
 	/**
 	 * Your drawings need to be inside this function otherwise they will be reset when 
@@ -188,7 +188,7 @@ function drawEverything() {
 	drawBackground();
 
 	if (showingWinScreen) {
-		document.body.className = '';
+		document.body.classList.remove('hide-cursor');
 		var txt;
 		if (player1Score >= winningScore) {
 			txt = "Left Player Wins";
@@ -200,7 +200,7 @@ function drawEverything() {
 
 		return;
 	} else if (showingStartScreen) {
-		document.body.className = '';
+		document.body.classList.remove('hide-cursor');
 		colorTxt("START ROUND", canvas.width / 2, canvas.height / 2,
 			defaultGameTextSize() + "px Arial", "center", "middle", "white");
 		return;
