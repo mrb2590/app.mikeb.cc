@@ -115,15 +115,11 @@ body.sidbar-collapsed .modal-backdrop {
 	left: $sidebar-width-collapsed;
 }
 
-// Medium
-@media (max-width: $screen-md-max) {
-	//
-}
-
 // Mobile
 @media (max-width: $screen-xs-max) {
 	.main-content {
 		width: $main-content-width-sidebar-full;
+		overflow-x: hidden;
 	}
 	// Modals
 	.modal, .modal-backdrop {
@@ -132,6 +128,10 @@ body.sidbar-collapsed .modal-backdrop {
 	}
 	.sidebar {
 		width: $sidebar-width-full;
+		position: absolute;
+		left: 0;
+		z-index: 100;
+    	box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.5);
 
 		.list-group-item {
 			width: 100vw;
@@ -144,8 +144,12 @@ body.sidbar-collapsed .modal-backdrop {
 	}
 }
 
+// Medium
+@media (max-width: $screen-md-max) {
+	//
+}
+
 // LArger than Mobile
 @media (min-width: $screen-sm) {
-	.navbar-default .navbar-toggle {
-	}
+	//
 }

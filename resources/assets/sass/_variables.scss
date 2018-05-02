@@ -51,5 +51,5 @@ $sidebar-list-group-border-radius: 0;
 // Main content
 $main-content-width: calc(100% - #{$sidebar-width});
 $main-content-width-sidebar-minimized: calc(100% - 23px - 30px);
-$main-content-width-sidebar-collapsed: 100vw;
-$main-content-width-sidebar-full: 0;
+$main-content-width-sidebar-collapsed: 100%;
+$main-content-width-sidebar-full: 100%;
